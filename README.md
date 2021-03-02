@@ -26,6 +26,7 @@ $ mkdir client
 Now, let's go to our server folder and initialize an empty Express app there:
 
 ```bash
+$ cd server
 $ npm init -y
 $ touch app.js
 $ npm install express body-parser mongoose dotenv
@@ -59,27 +60,55 @@ When the app is ready, our users should be able to:
 
 Please proceed to creating all the routes and files necessary for the Room CRUD to work
 
-<!-- ## Iteration #3: The `review` model and (optional) CRUD on it
+## Iteration #2: The `review` model and (optional) CRUD on it
 
-Great, you already have fully functioning CRUD app with users but we will go one more step: let's create *reviews section* for each room.
+Great, you already have fully functioning CRUD in the backend for the rooms, but we will go one more step: let's create _reviews section_ for each room.
 
 The review schema can look like this:
+
 ```js
 const reviewSchema = new Schema({
-  user: { type: Schema.Types.ObjectId, ref: 'User' },
-  comment: { type: String,  maxlength: 200 }
-})
+  comment: { type: String, maxlength: 200 },
+  roomId: { type: Schema.Types.ObjectId, ref: "Room" },
+});
 ```
-Now we can go ahead and update `reviews` property in the *roomSchema*:
+
+Now we can go ahead and update `reviews` property in the _roomSchema_:
+
 ```js
 ...
   reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' } ]
 ...
 ```
-Our users can:
-- when logged in, make reviews for all the rooms  but the ones they created
-- when logged in, edit and/or delete their comments (optional)
-- when logged out, see the rooms and all the comments -->
+
+Our users should be able to:
+
+- Make reviews for all the rooms but the ones they created
+- Edit and/or delete their comments (optional)
+- See the rooms and all the comments
+
+## Iteration #3: Back to the frontend
+
+You should have a fully functioning REST API by now, so let's give a face to our app.
+
+Create all the React components necessary for the following functionalities:
+
+- A homepage, displaying all the rooms that are available for renting;
+- A navigation menu, with links to every page in the app;
+- A room creation form, so users can create new rooms;
+- (BONUS) A room update form, so users can modify an existing room that they had previously created;
+- (BONUS) A room deletion button, that deletes the clicked room from the database.
+
+_Hint: Remember that we don't have authentication yet, so it's ok if everyone can edit or delete everyone else's rooms. We're gonna fix that in the next iteration_
+
+## Iteration 3.1: Frontend for reviews
+
+Now that our main pages are done, it's time to give a little attention to the reviews.
+
+- Create a room details page, using the specified id from the URL to display all the room information;
+- In the room details, display all the reviews that the specified room has attached to it;
+- In the room details, create a "Review" button that opens a little form for users to comment on that room;
+- [BONUS] In the room details, while displaying the room reviews, add an edit button and a delete button in each review, so users can edit or delete their comments
 
 <!-- ## Iteration #1: The Signup & Login & Logout Features
 
