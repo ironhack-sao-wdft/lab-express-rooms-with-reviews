@@ -110,29 +110,42 @@ Now that our main pages are done, it's time to give a little attention to the re
 - In the room details, create a "Review" button that opens a little form for users to comment on that room;
 - [BONUS] In the room details, while displaying the room reviews, add an edit button and a delete button in each review, so users can edit or delete their comments
 
-<!-- ## Iteration #1: The Signup & Login & Logout Features
+## Iteration 4: Authentication
 
-Our app will have users, and they will use `email` and `password` to authenticate themselves. They will also have to input their full name when signing in. In addition to this way, please feel free to use any  of the social strategies (this is bonus feature).
+Right now, everyone can create, view, edit or delete everyone else's rooms and reviews. That's because there's no way we can know who's using our app if we don't include some kind of authentication. Using the JWT strategy, Passport and the React Context API, create the Login, Signup and Logout functionalities for our app:
 
-So your user schema should look somewhat like this:
-```js
-const userSchema = new Schema({
-  email: String,
-  password: String,
-  fullName: String,
-  // slack login - optional
-  slackID: String,
-  // google login - optional
-  googleID: String
-}, {
-  timestamps: true
-});
-```
+💡 Make sure you install all the packages: _bcrypt_, _passport_, _passport-local_, _passport-jwt_ and _jsonwebtoken_.
 
-Now create all the routes and views needed to have users successfully signup/login/logout. We suggest using `passport.js` and its local strategy for the mandatory part of this iteration.
+- Create a Signup endpoint in the backend (don't forget to hash the user's password before writing to the database!);
+- Wire up all the necessary Passport configurations for issuing, signing and validating JWTs;
+- Create a Login route, that returns a valid access token to the client;
+- Protect every CRUD route in the backend so only logged in users can access them (only accept requests containing a valid access token in the Authorization header);
 
-💡 Make sure you install all the packages: *bcrypt*, *passport*, *passport-local*, and if you have social login: *passport-google-oauth* and/or *passport-slack*.
+That does it for our server. Back in the client, we need to:
 
-**Hint**: You have already everything set up in the previous lessons + class examples, be resourceful 🥳. -->
+- Wire up a Context in React to store and retrieve the access token from `localStorage`
+- Setup an Axios instance to automatically insert the access token in every request _(Tip: maybe take a look at Axios interceptors)_
+- [BONUS] Avoid weird usability issues by redirecting unauthorized users away from protected routes
+
+If you did everything correctly, you can now configure our pages to:
+
+- Only allow logged in users to create rooms;
+- Only show rooms that were **not** created by the logged in user in the homepage;
+- Only allow users to edit and delete their own rooms;
+- Only allow logged in users to review existing rooms;
+- Only allow users to edit or delete their own reviews
+
+If you made this far, congratulations! You built a fullstack application from scratch! Your app is ready for production. Go ahead and ask for instructions from your instructor or TA on how to deploy your app.
+
+## [SUPER BONUS] Iteration 5: File Upload
+
+If a complete fullstack app is not enough for you, go ahead and add file upload functionality to the app!
+
+- Setup a free Cloudinary account, and write down your API keys;
+- Using the `cloudinary`, `multer` and `multer-storage-cloudinary` NPM packages, setup a file upload route in your backend;
+- Before inserting your room in the database, fire a HTTP request from React containing an image file that the user chose. Upload this image file to Cloudinary. Maybe the `multer` package may be useful here?
+- Grab the image URL returned from your upload route, that is now stored in Cloudinary, and save it to your database in your normal submit flow
+
+:party::party::party: You did it! Now your fullstack app is even more complete and you're more than ready for your final project.
 
 Happy coding! :heart:
