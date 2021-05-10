@@ -2,6 +2,10 @@
 
 # Rooms App with Reviews - final practice for project #2
 
+Link to your backend repository here:
+
+Link to your frontend repository here:
+
 ## Introduction
 
 In this lab, we will create a fullstack application from scratch over the span of multiple iterations.
@@ -16,25 +20,25 @@ The app needs to have users (signup, login, logout functionality) and full CRUD 
 
 ### Iteration 0 | Create the project
 
-First of all, we need to separate our Frontend from our Backend. Let's create two folders inside our project folder, server (for our backend) and client (for our frontend):
+First of all, we need to separate our Frontend from our Backend. Let's create two separate repositories to keep things better organized. On the top of this file you will find these parts:
+
+"Link to your backend repository here:
+
+Link to your frontend repository here:""
+
+Just paste the link (A Markdown link, just research how to create links inside Markdown) to your backend and frontend repositories in front of the correct phrase.
+
+Now, let's go to our server repository and initialize an empty Express app there:
 
 ```bash
-$ mkdir server
-$ mkdir client
-```
-
-Now, let's go to our server folder and initialize an empty Express app there:
-
-```bash
-$ cd server
 $ npm init -y
 $ touch app.js
-$ npm install express body-parser mongoose dotenv
+$ npm install express mongoose dotenv
 ```
 
 ## Iteration #1: The "Plumbing"
 
-Configure your app.js file with all necessary parts for the Express server to run: dotenv and environment variables, configurations for receiving JSON and URLEncoded requests, importing routers and setting the database up, and lastly, initializing the server to listen for HTTP requests.
+Configure your app.js file with all necessary parts for the Express server to run: dotenv and environment variables, configurations for receiving JSON requests, importing routers and setting the database up, and lastly, initializing the server to listen for HTTP requests.
 
 Remember that everything that you need is in our class examples, let's exercise that research muscle!
 
@@ -87,7 +91,18 @@ Our users should be able to:
 - Edit and/or delete their comments (optional)
 - See the rooms and all the comments
 
-## Iteration #3: Back to the frontend
+## Iteration 3: API Authentication
+
+Right now, everyone can create, view, edit or delete everyone else's rooms and reviews. That's because there's no way we can know who's using our app if we don't include some kind of authentication. Using the JWT strategy, Passport and the React Context API, create the Login, Signup and Logout functionalities for our app:
+
+💡 Make sure you install all the packages: _bcryptjs_, _jsonwebtoken_ and _express-jwt_.
+
+- Create a Signup endpoint in the backend (don't forget to hash the user's password before writing to the database!);
+- Wire up all the necessary JWT configurations and middlewares for issuing, signing and validating JWTs;
+- Create a Login route, that returns a valid access token to the client;
+- Protect every CRUD route in the backend so only logged in users can access them (only accept requests containing a valid access token in the Authorization header) using our custom middlewares;
+
+## Iteration #4: Back to the frontend
 
 You should have a fully functioning REST API by now, so let's give a face to our app.
 
@@ -101,7 +116,7 @@ Create all the React components necessary for the following functionalities:
 
 _Hint: Remember that we don't have authentication yet, so it's ok if everyone can edit or delete everyone else's rooms. We're gonna fix that in the next iteration_
 
-## Iteration 3.1: Frontend for reviews
+## Iteration 4.1: Frontend for reviews
 
 Now that our main pages are done, it's time to give a little attention to the reviews.
 
@@ -110,16 +125,7 @@ Now that our main pages are done, it's time to give a little attention to the re
 - In the room details, create a "Review" button that opens a little form for users to comment on that room;
 - [BONUS] In the room details, while displaying the room reviews, add an edit button and a delete button in each review, so users can edit or delete their comments
 
-## Iteration 4: Authentication
-
-Right now, everyone can create, view, edit or delete everyone else's rooms and reviews. That's because there's no way we can know who's using our app if we don't include some kind of authentication. Using the JWT strategy, Passport and the React Context API, create the Login, Signup and Logout functionalities for our app:
-
-💡 Make sure you install all the packages: _bcrypt_, _passport_, _passport-local_, _passport-jwt_ and _jsonwebtoken_.
-
-- Create a Signup endpoint in the backend (don't forget to hash the user's password before writing to the database!);
-- Wire up all the necessary Passport configurations for issuing, signing and validating JWTs;
-- Create a Login route, that returns a valid access token to the client;
-- Protect every CRUD route in the backend so only logged in users can access them (only accept requests containing a valid access token in the Authorization header);
+## Iteration 5: React Authentication
 
 That does it for our server. Back in the client, we need to:
 
