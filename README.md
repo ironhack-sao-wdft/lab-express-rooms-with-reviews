@@ -143,7 +143,7 @@ If you did everything correctly, you can now configure our pages to:
 
 If you made this far, congratulations! You built a fullstack application from scratch! Your app is ready for production. Go ahead and ask for instructions from your instructor or TA on how to deploy your app.
 
-## [SUPER BONUS] Iteration 5: File Upload
+## [SUPER BONUS] Iteration 6: File Upload
 
 If a complete fullstack app is not enough for you, go ahead and add file upload functionality to the app!
 
