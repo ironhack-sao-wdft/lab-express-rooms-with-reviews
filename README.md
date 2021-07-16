@@ -42,7 +42,18 @@ Configure your app.js file with all necessary parts for the Express server to ru
 
 Remember that everything that you need is in our class examples, let's exercise that research muscle!
 
-## Iteration #1.1: The CRUD on `room` model
+## Iteration 2: API Authentication
+
+Right now, everyone can create, view, edit or delete everyone else's rooms and reviews. That's because there's no way we can know who's using our app if we don't include some kind of authentication. Using the JWT strategy, Passport and the React Context API, create the Login, Signup and Logout functionalities for our app:
+
+💡 Make sure you install all the packages: _bcryptjs_, _jsonwebtoken_ and _express-jwt_.
+
+- Create a Signup endpoint in the backend (don't forget to hash the user's password before writing to the database!);
+- Wire up all the necessary JWT configurations and middlewares for issuing, signing and validating JWTs;
+- Create a Login route, that returns a valid access token to the client;
+- Protect every CRUD route in the backend so only logged in users can access them (only accept requests containing a valid access token in the Authorization header) using our custom middlewares;
+
+## Iteration #3: The CRUD on `room` model
 
 Great, we have the boilerplate so let's start adding some more functionality to our app.
 Our rooms will have following schema:
@@ -64,7 +75,7 @@ When the app is ready, our users should be able to:
 
 Please proceed to creating all the routes and files necessary for the Room CRUD to work
 
-## Iteration #2: The `review` model and (optional) CRUD on it
+## Iteration #3.1: The `review` model and (optional) CRUD on it
 
 Great, you already have fully functioning CRUD in the backend for the rooms, but we will go one more step: let's create _reviews section_ for each room.
 
@@ -90,17 +101,6 @@ Our users should be able to:
 - Make reviews for all the rooms but the ones they created
 - Edit and/or delete their comments (optional)
 - See the rooms and all the comments
-
-## Iteration 3: API Authentication
-
-Right now, everyone can create, view, edit or delete everyone else's rooms and reviews. That's because there's no way we can know who's using our app if we don't include some kind of authentication. Using the JWT strategy, Passport and the React Context API, create the Login, Signup and Logout functionalities for our app:
-
-💡 Make sure you install all the packages: _bcryptjs_, _jsonwebtoken_ and _express-jwt_.
-
-- Create a Signup endpoint in the backend (don't forget to hash the user's password before writing to the database!);
-- Wire up all the necessary JWT configurations and middlewares for issuing, signing and validating JWTs;
-- Create a Login route, that returns a valid access token to the client;
-- Protect every CRUD route in the backend so only logged in users can access them (only accept requests containing a valid access token in the Authorization header) using our custom middlewares;
 
 ## Iteration #4: Back to the frontend
 
