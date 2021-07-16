@@ -1,6 +1,6 @@
 ![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
 
-# Rooms App with Reviews - final practice for project #2
+# Rooms App with Reviews - final practice for project #3
 
 Link to your backend repository here:
 
@@ -18,7 +18,7 @@ The app needs to have users (signup, login, logout functionality) and full CRUD 
 - **Routes**: auth, rooms, reviews, users (optional, in case you want to add CRUD on users as well)
 - **Views**: all the necessary pages so the users can auth themselves and do the CRUD. For easier navigation through your files and consistent naming please organize all the pages into folders (ex. _auth-views_, _room-views_, _comment-views_, ...)
 
-### Iteration 0 | Create the project
+### Iteration #0 | Create the project
 
 First of all, we need to separate our Frontend from our Backend. Let's create two separate repositories to keep things better organized. On the top of this file you will find these parts:
 
@@ -36,13 +36,13 @@ $ touch app.js
 $ npm install express mongoose dotenv
 ```
 
-## Iteration #1: The "Plumbing"
+## Iteration #1 | The "Plumbing"
 
 Configure your app.js file with all necessary parts for the Express server to run: dotenv and environment variables, configurations for receiving JSON requests, importing routers and setting the database up, and lastly, initializing the server to listen for HTTP requests.
 
 Remember that everything that you need is in our class examples, let's exercise that research muscle!
 
-## Iteration 2: API Authentication
+## Iteration #2 | API Authentication
 
 Right now, everyone can create, view, edit or delete everyone else's rooms and reviews. That's because there's no way we can know who's using our app if we don't include some kind of authentication. Using the JWT strategy, Passport and the React Context API, create the Login, Signup and Logout functionalities for our app:
 
@@ -53,7 +53,7 @@ Right now, everyone can create, view, edit or delete everyone else's rooms and r
 - Create a Login route, that returns a valid access token to the client;
 - Protect every CRUD route in the backend so only logged in users can access them (only accept requests containing a valid access token in the Authorization header) using our custom middlewares;
 
-## Iteration #3: The CRUD on `room` model
+## Iteration #3 | The CRUD on `room` model
 
 Great, we have the boilerplate so let's start adding some more functionality to our app.
 Our rooms will have following schema:
@@ -75,7 +75,7 @@ When the app is ready, our users should be able to:
 
 Please proceed to creating all the routes and files necessary for the Room CRUD to work
 
-## Iteration #3.1: The `review` model and (optional) CRUD on it
+## Iteration #3.1 | The `review` model and (optional) CRUD on it
 
 Great, you already have fully functioning CRUD in the backend for the rooms, but we will go one more step: let's create _reviews section_ for each room.
 
@@ -102,7 +102,7 @@ Our users should be able to:
 - Edit and/or delete their comments (optional)
 - See the rooms and all the comments
 
-## Iteration #4: Back to the frontend
+## Iteration #4 | Back to the frontend
 
 You should have a fully functioning REST API by now, so let's give a face to our app.
 
@@ -116,7 +116,7 @@ Create all the React components necessary for the following functionalities:
 
 _Hint: Remember that we don't have authentication yet, so it's ok if everyone can edit or delete everyone else's rooms. We're gonna fix that in the next iteration_
 
-## Iteration 4.1: Frontend for reviews
+## Iteration #4.1 | Frontend for reviews
 
 Now that our main pages are done, it's time to give a little attention to the reviews.
 
@@ -125,7 +125,7 @@ Now that our main pages are done, it's time to give a little attention to the re
 - In the room details, create a "Review" button that opens a little form for users to comment on that room;
 - [BONUS] In the room details, while displaying the room reviews, add an edit button and a delete button in each review, so users can edit or delete their comments
 
-## Iteration 5: React Authentication
+## Iteration 5# | React Authentication
 
 That does it for our server. Back in the client, we need to:
 
@@ -143,7 +143,7 @@ If you did everything correctly, you can now configure our pages to:
 
 If you made this far, congratulations! You built a fullstack application from scratch! Your app is ready for production. Go ahead and ask for instructions from your instructor or TA on how to deploy your app.
 
-## [SUPER BONUS] Iteration 6: File Upload
+## [SUPER BONUS] Iteration #6 | File Upload
 
 If a complete fullstack app is not enough for you, go ahead and add file upload functionality to the app!
 
